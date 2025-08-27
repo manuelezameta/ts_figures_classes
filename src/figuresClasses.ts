@@ -17,13 +17,17 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('All triangle sides must be > 0');
+      throw new Error(
+        `All triangle sides must be > 0 (received: ${a}, ${b}, ${c})`,
+      );
     }
 
     const sides = [a, b, c].sort((x, y) => y - x);
 
     if (sides[0] >= sides[1] + sides[2]) {
-      throw new Error(`Sides ${a}, ${b} and ${c} can't form a triangle`);
+      throw new Error(
+        `Triangle inequality violated: (${sides[0]}) >= (${sides[1]}) + (${sides[2]})`,
+      );
     }
   }
 
@@ -46,7 +50,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be a positive number');
+      throw new Error(`Radius must be > 0 (received: ${radius})`);
     }
   }
 
@@ -64,7 +68,9 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Width and height must be > 0');
+      throw new Error(
+        `Width and height must be > 0,  (received: width ${width}, height ${height})`,
+      );
     }
   }
 
