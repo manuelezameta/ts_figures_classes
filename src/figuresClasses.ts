@@ -17,13 +17,13 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Sides must be positive numbers');
+      throw new Error('All triangle sides must be > 0');
     }
 
     const sides = [a, b, c].sort((x, y) => y - x);
 
     if (sides[0] >= sides[1] + sides[2]) {
-      throw new Error('Invalid triangle sides');
+      throw new Error(`Sides ${a}, ${b} and ${c} can't form a triangle`);
     }
   }
 
@@ -64,7 +64,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Width and height must be positive numbers');
+      throw new Error('Width and height must be > 0');
     }
   }
 
